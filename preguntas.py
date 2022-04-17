@@ -43,7 +43,7 @@ def pregunta_01():
 
     # Imprima las nuevas dimensiones de `X`
     print(X_reshaped.shape)
-
+#pregunta_01()
 
 def pregunta_02():
     """
@@ -73,7 +73,7 @@ def pregunta_02():
 
     # Imprima la correlación entre las columnas `GDP` y `life` con 4 decimales.
     print(df['GDP'].corr(df['life']).round(4))
-
+#pregunta_02()
 
 def pregunta_03():
     """
@@ -116,7 +116,7 @@ def pregunta_03():
 
     # Imprima el R^2 del modelo con 4 decimales
     print(reg.score(X_fertility, y_life).round(4))
-
+#pregunta_03()
 
 def pregunta_04():
     """
@@ -147,10 +147,10 @@ def pregunta_04():
 
     # Divida los datos de entrenamiento y prueba. La semilla del generador de números
     # aleatorios es 53. El tamaño de la muestra de entrenamiento es del 80%
-    (X_train, X_test, y_train, y_test,) = train_test_split(
+    X_train, X_test, y_train, y_test = train_test_split(
         X_fertility,
         y_life,
-        test_size=0.8,
+        test_size=0.2,
         random_state=53,
     )
 
@@ -164,6 +164,6 @@ def pregunta_04():
     y_pred = linearRegression.predict(X_test)
 
     # Compute and print R^2 and RMSE
-    print("R^2: {:6.4f}".format(linearRegression.score(X_test, y_test)))
+    print("R^2: {:6.4f}".format(r2_score(y_test, y_pred)))
     rmse = np.sqrt(mean_squared_error(y_test, y_pred))
     print("Root Mean Squared Error: {:6.4f}".format(rmse))
